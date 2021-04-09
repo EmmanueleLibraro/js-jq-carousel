@@ -1,7 +1,11 @@
 $(document).ready(function(){
 
+    //TASTI NEXT E PREV
     var nextBtn = $('.next');
     var prevBtn = $('.prev');
+
+    //PALLINI
+    navDot = $('.nav i');
 
     //NAVIGARE TRA LE IMG
     nextBtn.click(function(){
@@ -20,7 +24,11 @@ $(document).ready(function(){
         }else if (e.keyCode == 39){   //39 E' IL VALORE PREDEFINITO DEL TASTO DIREZIONALE DESTRO
             nextPrevSlide('next');
         }
- 
+    });
+
+    //NAVIGAZIONE CON PALLINI
+    navDot.click(function(){
+        nextPrevSlide($(this));
     });
 
     //FINE DOC READY
@@ -67,5 +75,10 @@ function nextPrevSlide (direction){                //NEL PARAMETRO SI METTE DIRE
             imgActive.prev('img').addClass('active');
             circle.prev('i').addClass('active');
         }
+    }else{
+        direction.addClass('active');  //SERVE PER I PALLINI QUANDO SONO CLICCATI
+
+        var pos = direction.index();  //SERVE PER SAPERE LA POSIZIONE DEI PALLINI ( ZERO BASED)
+        $('.images img').eq(pos).addClass('active');
     }
 }
