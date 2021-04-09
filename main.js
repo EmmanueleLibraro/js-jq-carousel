@@ -12,6 +12,16 @@ $(document).ready(function(){
         nextPrevSlide('prev');
     });
 
+    //SKIPPARE LE IMG CON I TASTI DIREZIONALI DELLA TASTIERA 
+    $(document).keydown(function(e){
+
+        if(e.keyCode == 37){          //37 E' IL VALORE PREDEFINITO DEL TASTO DIREZIONALE SINISTRO
+            nextPrevSlide('prev');
+        }else if (e.keyCode == 39){   //39 E' IL VALORE PREDEFINITO DEL TASTO DIREZIONALE DESTRO
+            nextPrevSlide('next');
+        }
+ 
+    });
 
     //FINE DOC READY
 });
@@ -25,7 +35,13 @@ function nextPrevSlide (direction){                //NEL PARAMETRO SI METTE DIRE
     var imgActive = $('.images img.active');
     var circle = $('.nav i.active');
 
-    //TOGLIE LA CLASSE ACTIVE COSI DA POTERSI SPOSTARE TRA LE IMG
+
+
+
+
+
+
+    //TOGLIE LA CLASSE ACTIVE COSI DA POTERSI SPOSTARE TRA LE IMG / PALLINI
     imgActive.removeClass('active');
     circle.removeClass('active');
 
